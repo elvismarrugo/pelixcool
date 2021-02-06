@@ -1,7 +1,6 @@
-import '../styles/globals.css'
+import '../scss/globals.scss'
+import 'semantic-ui-css/semantic.min.css';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+export default function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />;
 }
-
-export default MyApp
