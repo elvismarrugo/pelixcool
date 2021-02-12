@@ -1,2 +1,8 @@
 .menu {  
+  background-color: $background-grey-light;
+  border-radius: 0;
+
+  .ui.grid{
+    margin: 0;
+  }
 }

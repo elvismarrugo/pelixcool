@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <div className='header'>
       <TopBar />      
-      <div>PLATZI</div>
+      <div>PELIXCOOL</div>
     </div>
   );
 }

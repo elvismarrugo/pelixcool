@@ -9,9 +9,9 @@ export default function TopBar() {
           <Grid.Column width={8} className='top-bar__left'>
             <Logo />
             <h2>Inicio</h2>
-            <h2>Inicio</h2>
-            <h2>Inicio</h2>
-            <h2>Inicio</h2>            
+            <h2>Mi Lista</h2>
+            <h2>Nuevas</h2>
+            <h2>Tendencias</h2>            
           </Grid.Column>
           <Grid.Column width={8} className='top-bar__right'>
             <Search />            
