@@ -5,4 +5,11 @@
   .ui.grid{
     margin: 0;
   }
+
+  &__left,
+  &__right {
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center;
+  }
 }

@@ -3,18 +3,24 @@ import Head from 'next/head'
 // import { Button, Icon } from 'semantic-ui-react';
 import BasicLayout from '../layouts/BasicLayout'
 
-export default function Home(movie) {
+export default function Home({movie}) {
   return (
     <BasicLayout>
       <h1>Estamos en la Home</h1>
-      {/* <div> {JSON.stringify(movie)} </div> */}
-      
       <div>
-        <img
-          src={movie.Poster}
-          alt={movie.Title}          
-        />
+        {/* <h6>{JSON.stringify(movie)}</h6> */}
+        <h6>{`${movie.Title} - ${movie.Year}`}</h6>
+        <img src={movie.Poster} alt='' />
       </div>
+
+      {/* 
+      <div>
+        <h1>{movie.Title}</h1>
+        
+      </div> */}
+      {/* <div>
+        <img src={movie.Poster} alt={movie.Title} />
+      </div> */}
     </BasicLayout>
   );
 }
