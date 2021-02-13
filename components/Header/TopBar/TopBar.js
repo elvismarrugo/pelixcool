@@ -1,4 +1,4 @@
-import { Container, Grid, Image, Input } from 'semantic-ui-react';
+import { Container, Menu, Grid, Image, Input, Icon } from 'semantic-ui-react';
 import Link from 'next/link';
 
 export default function TopBar() {
@@ -6,16 +6,13 @@ export default function TopBar() {
     <div className='top-bar'>
       <Container>
         <Grid className='top-bar'>
-          <Grid.Column width={8} className='top-bar__left'>
+          <Grid.Column width={6} className='top-bar__left'>
             <Logo />
-            <h2>Inicio</h2>
-            <h2>Mi Lista</h2>
-            <h2>Nuevas</h2>
-            <h2>Tendencias</h2>            
+            <NavLinks />
           </Grid.Column>
-          <Grid.Column width={8} className='top-bar__right'>
-            <Search />            
-            <h2>Inicio</h2>    
+          <Grid.Column width={10} className='top-bar__right'>
+            <Search />
+            <Login />            
           </Grid.Column>
         </Grid>
       </Container>
@@ -33,6 +30,26 @@ function Logo() {
   );
 }
 
+function NavLinks() {
+  return (
+    <Menu>
+      <Link href='/'>
+        <Menu.Item as='a'>Inicio</Menu.Item>
+      </Link>
+      <Link href='/milista'>
+        <Menu.Item as='a'>Mi Lista</Menu.Item>
+      </Link>
+
+      <Link href='/nuevas'>
+        <Menu.Item as='a'>Nuevas</Menu.Item>
+      </Link>
+      <Link href='/tendencias'>
+        <Menu.Item as='a'>Tendencias</Menu.Item>
+      </Link>
+    </Menu>
+  );
+}
+
 function Search() {
   return (
     <Input
@@ -40,5 +57,16 @@ function Search() {
       icon={{ name: 'search' }}
       placeholder='Busqueda peliculas'
     />
+  );
+}
+
+function Login() {  
+  return (
+    <Menu>
+      <Menu.Item>
+        <Icon name='user outline'/>
+        Mi cuenta
+      </Menu.Item>
+    </Menu>
   );
 }
