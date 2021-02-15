@@ -5,14 +5,18 @@ export default function Home({ movies }) {
   return (
     <BasicLayout>
       <div>
-        {/* <h6>{JSON.stringify(movies)}</h6> */}
-        {/* <img src={movies.Poster} alt='' /> */}
-        {/* <h6>{`${movies.Title} - ${movies.Year}`}</h6>     */}
-        {
-          movies.map((movie) => {
-            return <div>{`${movie.Title} - ${movie.Year}`}</div>;
-          })
-        }
+        <h2 >
+          {/* <h6>{JSON.stringify(movies)}</h6> */}
+          {/* <img src={movies.Poster} alt='' /> */}
+          {/* <h6>{`${movies.Title} - ${movies.Year}`}</h6>     */}
+          {movies.map((movies) => {
+            return (
+              <div
+                key={movies.imdbID}
+               >{`${movies.Title} - ${movies.Year}`}</div>
+            );
+          })}
+        </h2>
       </div>
     </BasicLayout>
   );

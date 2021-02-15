@@ -1,6 +1,9 @@
 .basic-layout {
   min-height: 100vh;
   background-color: $background-dark;
+  background-image: url("https://pelix.s3.amazonaws.com/static/bg-web.jpg");
+  background-size: cover;
+  background-position: center;
   .content {
     background-color: $background-dark;
     height: 100vh;    

@@ -1,7 +1,13 @@
+import { useState } from 'react';
 import { Container, Menu, Grid, Image, Input, Icon } from 'semantic-ui-react';
 import Link from 'next/link';
+import BasicModal from '../../Modal/BasicModal';
 
 export default function TopBar() {
+
+  const [showModal, setShowModal] = useState(false);
+  const onShowModal = () => setShowModal(true);
+
   return (
     <div className='top-bar'>
       <Container>
@@ -12,10 +18,18 @@ export default function TopBar() {
           </Grid.Column>
           <Grid.Column width={10} className='top-bar__right'>
             <Search />
-            <Login />            
+            <Login />
           </Grid.Column>
         </Grid>
       </Container>
+      <BasicModal
+        show={showModal}
+        setShow={setShowModal}
+        title='Inicia sesión'
+        // size='small'
+      >
+        <h2>Contenido del modal</h2>
+      </BasicModal>
     </div>
   );
 }
@@ -60,11 +74,13 @@ function Search() {
   );
 }
 
-function Login() {  
+function Login(props) {
+  const { onShowModal } = props;
+
   return (
     <Menu>
-      <Menu.Item>
-        <Icon name='user outline'/>
+      <Menu.Item onClick={onShowModal}>
+        <Icon name='user outline' />
         Mi cuenta
       </Menu.Item>
     </Menu>
