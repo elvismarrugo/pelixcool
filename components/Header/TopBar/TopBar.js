@@ -18,7 +18,7 @@ export default function TopBar() {
           </Grid.Column>
           <Grid.Column width={10} className='top-bar__right'>
             <Search />
-            <Login />
+            <Login onShowModal={onShowModal} />
           </Grid.Column>
         </Grid>
       </Container>
@@ -26,7 +26,7 @@ export default function TopBar() {
         show={showModal}
         setShow={setShowModal}
         title='Inicia sesión'
-        // size='small'
+        size='small'
       >
         <h2>Contenido del modal</h2>
       </BasicModal>
