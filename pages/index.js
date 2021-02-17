@@ -11,9 +11,9 @@ export default function Home({ movies }) {
           {/* <h6>{`${movies.Title} - ${movies.Year}`}</h6>     */}
           {movies.map((movies) => {
             return (
-              <div
-                key={movies.imdbID}
-               >{`${movies.Title} - ${movies.Year}`}</div>
+              <div key={movies.imdbID}>
+                {`${movies.Title} - ${movies.Year}`}
+              </div>
             );
           })}
         </h2>

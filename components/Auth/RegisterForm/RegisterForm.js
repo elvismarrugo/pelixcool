@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 import { registerApi } from '../../../api/user';
 
 export default function RegisterForm(props) {
@@ -14,50 +15,57 @@ export default function RegisterForm(props) {
     onSubmit: async (formData) => {
       setLoading(true);
       const response = await registerApi(formData);
-      console.log(response);
-      if(response?.jwt){
+      if (response?.jwt) {
         showLoginForm();
       } else {
-          console.log("error en el registro");
+        toast.error('Error al registrar el usaurio, inténtelo mas tarde');
       }
       setLoading(false);
     },
   });
+
   return (
-    <Form className='login-form' onSubmit={formik.handleSubmit}>
+    <Form className="login-form" onSubmit={formik.handleSubmit}>
       <Form.Input
-        name='name'
-        type='text'
-        placeholder='Nombre'
+        name="name"
+        type="text"
+        placeholder="Nombre"
         onChange={formik.handleChange}
         error={formik.errors.name}
       />
       <Form.Input
-        name='lastname'
-        type='text'
-        placeholder='Apellidos'
+        name="lastname"
+        type="text"
+        placeholder="Apellidos"
         onChange={formik.handleChange}
         error={formik.errors.lastname}
       />
       <Form.Input
-        name='email'
-        type='text'
-        placeholder='Corre Electronico'
+        name="username"
+        type="text"
+        placeholder="Nombre de usuario"
+        onChange={formik.handleChange}
+        error={formik.errors.username}
+      />
+      <Form.Input
+        name="email"
+        type="text"
+        placeholder="Correo electronico"
         onChange={formik.handleChange}
         error={formik.errors.email}
       />
       <Form.Input
-        name='password'
-        type='password'
-        placeholder='Contraseña'
+        name="password"
+        type="password"
+        placeholder="Contraseña"
         onChange={formik.handleChange}
         error={formik.errors.password}
       />
-      <div className='actions'>
-        <Button type='button' basic>
+      <div className="actions">
+        <Button type="button" basic onClick={showLoginForm}>
           Iniciar sesión
         </Button>
-        <Button type='submit' className='submit' loading={loading}>
+        <Button type="submit" className="submit" loading={loading}>
           Registrar
         </Button>
       </div>
