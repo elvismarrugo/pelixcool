@@ -8,6 +8,22 @@ import { toast } from 'react-toastify';
 export default function LoginForm(props) {
   const { showRegisterForm } = props;
 
+  const formik = useFormik({
+    initialValues: initialValues(),
+    validationSchema: Yup.object(validationSchema()),
+    onSubmit: async (formData) => {
+      setLoading(true);
+      const response = await registerApi(formData);
+      if (response?.jwt) {
+        toast.success('Registro exitoso')
+        showLoginForm();
+      } else {
+        toast.error('Error al registrar el usuario, inténtelo mas tarde!');
+      }
+      setLoading(false);
+    },
+  });
+
   return (
    <Form className="login-form">
       <Form.Input
@@ -39,4 +55,21 @@ export default function LoginForm(props) {
       </div>
     </Form>
   );
+}
+
+function initialValues() {
+  return {
+    identifier: '',    
+    password: '',
+  };
+}
+
+function validationSchema() {
+  return {
+    name: Yup.string().required(true),
+    lastname: Yup.string().required(true),
+    username: Yup.string().required(true),
+    email: Yup.string().email(true).required(true),
+    password: Yup.string().required(true),
+  };
 }
