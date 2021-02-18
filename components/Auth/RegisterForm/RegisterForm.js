@@ -16,9 +16,10 @@ export default function RegisterForm(props) {
       setLoading(true);
       const response = await registerApi(formData);
       if (response?.jwt) {
+        toast.success('Registro exitoso')
         showLoginForm();
       } else {
-        toast.error('Error al registrar el usaurio, inténtelo mas tarde');
+        toast.error('Error al registrar el usuario, inténtelo mas tarde!');
       }
       setLoading(false);
     },
@@ -65,7 +66,7 @@ export default function RegisterForm(props) {
         <Button type="button" basic onClick={showLoginForm}>
           Iniciar sesión
         </Button>
-        <Button type="submit" className="submit" loading={loading}>
+        <Button type="submit" className="submit" loading={loading}>          
           Registrar
         </Button>
       </div>
