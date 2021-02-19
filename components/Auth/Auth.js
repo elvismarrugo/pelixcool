@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 
@@ -17,7 +17,7 @@ export default function Auth(props) {
   };
 
   return showLogin ? (
-    <LoginForm showRegisterForm={showRegisterForm} />
+    <LoginForm showRegisterForm={showRegisterForm} onCloseModal={onCloseModal} />
   ) : (
     <RegisterForm showLoginForm={showLoginForm} />
   );
