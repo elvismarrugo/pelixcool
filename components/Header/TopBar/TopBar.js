@@ -68,11 +68,24 @@ function NavLinks() {
   );
 }
 
+function Login(props) {
+  const { onShowModal } = props;
+
+  return (
+    <Menu>
+      <Menu.Item onClick={onShowModal}>
+        <Icon name='user outline' />
+        Mi cuenta
+      </Menu.Item>
+    </Menu>
+  );
+}
+
 function Search() {
   const [searchStr, setSearchStr] = useState('')
   const [load, setLoad] = useState(false);
   const router = useRouter();
-
+ 
   useEffect(() => {
     if (load) {
       router.push(`/search?query=${searchStr}`);
@@ -85,21 +98,7 @@ function Search() {
       id='search-movie'
       icon={{ name: 'search' }}
       value={router.query.query}
-      placeholder='Busqueda peliculas'
-      onChange={(_,data)=> setSearchStr(data.value)}
+      onChange={(_, data) => setSearchStr(data.value)}
     />
-  );
-}
-
-function Login(props) {
-  const { onShowModal } = props;
-
-  return (
-    <Menu>
-      <Menu.Item onClick={onShowModal}>
-        <Icon name='user outline' />
-        Mi cuenta
-      </Menu.Item>
-    </Menu>
   );
 }
