@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, Menu, Grid, Image, Input, Icon } from 'semantic-ui-react';
 import Link from 'next/link';
 import BasicModal from '../../Modal/BasicModal';
 import Auth from '../../Auth';
+import { useRouter } from 'next/router';
 
 export default function TopBar() {
   const [showModal, setShowModal] = useState(false);
   const [titleModal, setTitleModal] = useState('Iniciar Sesión');
 
   const onShowModal = () => setShowModal(true);
-  const onCloseModal = () => setShowModal(true);
+  const onCloseModal = () => setShowModal(false);
 
   return (
     <div className='top-bar'>
@@ -68,11 +69,26 @@ function NavLinks() {
 }
 
 function Search() {
+  const [searchStr, setSearchStr] = useState('')
+  const [load, setLoad] = useState(false);
+  const router = useRouter();
+
+  console.log(searchStr)
+
+  useEffect(() => {
+    if (load) {
+      router.push(`/search?query=${searchStr}`);
+    }
+    setLoad(true);
+  }, [searchStr])
+
   return (
     <Input
       id='search-movie'
       icon={{ name: 'search' }}
+      value={router.query.query}
       placeholder='Busqueda peliculas'
+      onChange={(_,data)=> setSearchStr(data.value)}
     />
   );
 }
