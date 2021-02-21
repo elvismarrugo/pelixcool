@@ -73,8 +73,6 @@ function Search() {
   const [load, setLoad] = useState(false);
   const router = useRouter();
 
-  console.log(searchStr)
-
   useEffect(() => {
     if (load) {
       router.push(`/search?query=${searchStr}`);

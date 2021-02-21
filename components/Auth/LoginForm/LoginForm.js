@@ -15,9 +15,7 @@ export default function LoginForm(props) {
     onSubmit: async (formData) => {
       setLoading(true);
       const response = await loginApi(formData);
-      console.log(response)
       if (response?.jwt) {
-      //  console.log('login ok')
         onCloseModal();
       } else {
         toast.error('El correo o la contraseña son incorrectos!');
