@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React,{ useState } from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
-import {loginApi} from '../../../api/user'
-
+import { loginApi } from '../../../api/user'
 
 export default function LoginForm(props) {
   const { showRegisterForm, onCloseModal } = props;
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: initialValues(),
@@ -16,8 +15,9 @@ export default function LoginForm(props) {
     onSubmit: async (formData) => {
       setLoading(true);
       const response = await loginApi(formData);
+      console.log(response)
       if (response?.jwt) {
-       console.log('login ok')
+      //  console.log('login ok')
         onCloseModal();
       } else {
         toast.error('El correo o la contraseña son incorrectos!');
@@ -27,7 +27,7 @@ export default function LoginForm(props) {
   });
 
   return (
-   <Form className="login-form" onSubmit={formik.handleSubmit}>   
+   <Form className="login-form" onSubmit={formik.handleSubmit}>
       <Form.Input
         name="identifier"
         type="text"
@@ -43,15 +43,15 @@ export default function LoginForm(props) {
         error={formik.errors.password}
       />
       <div className="actions">
-        <Button type="button" basic onClick={showRegisterForm}>
+      <Button type="button" basic onClick={showRegisterForm}>
           Registrarse
         </Button>
         <div>
-          <Button type="submit" className="submit" loading={loading} >
+        <Button className="submit" type="submit" loading={loading}>
             Entrar
           </Button>
           <Button type="button">
-            Has olvidado la Contraseña
+          ¿Has olvidado la contraseña?
           </Button>
         </div>
       </div>
@@ -61,7 +61,7 @@ export default function LoginForm(props) {
 
 function initialValues() {
   return {
-    identifier: '',    
+    identifier: '',
     password: '',
   };
 }

@@ -19,13 +19,13 @@ export async function registerApi(formData) {
   }
 }
 
-export async function loginApi (formData) {
+export async function loginApi(formData) {
   try {
     const url = `${BASE_PATH}/auth/local`;
     const params = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
     };
@@ -33,7 +33,7 @@ export async function loginApi (formData) {
     const result = await response.json();
     return result;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return null;
   }
 }
