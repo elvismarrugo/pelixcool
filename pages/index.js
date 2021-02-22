@@ -31,7 +31,6 @@ export default function Home() {
           <h3>No hay juegos</h3>
         </div>
       )}
-  {/* {size(movies) > 0 && <ListGames movies={movies} />} */}      
       {size(movies) > 0 && <ListMovies movies={movies} />}
     </BasicLayout>
   );

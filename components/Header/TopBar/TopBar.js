@@ -84,20 +84,22 @@ function Login(props) {
 function Search() {
   const [searchStr, setSearchStr] = useState('')
   const [load, setLoad] = useState(false);
-  const router = useRouter();
+  // const router = useRouter();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               º
  
-  useEffect(() => {
-    if (load) {
-      router.push(`/search?query=${searchStr}`);
-    }
-    setLoad(true);
-  }, [searchStr])
+  // useEffect(() => {
+  //   if (load) {
+  //     router.push({searchStr});
+  //     // router.push(`/search?query=${searchStr}`);
+  //   }
+  //   setLoad(true);
+  // }, [searchStr])
 
+  console.log(searchStr)
   return (
     <Input
       id='search-movie'
       icon={{ name: 'search' }}
-      value={router.query.query}
+      value={searchStr}
       onChange={(_, data) => setSearchStr(data.value)}
     />
   );

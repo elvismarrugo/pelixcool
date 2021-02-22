@@ -1,24 +1,25 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import { Loader } from 'semantic-ui-react';
 import { size } from 'loadash';
 import BasicLayout from '../layouts/BasicLayout'
 import {searchMoviesApi} from '../api/movie';
 import ListMovies from '../components/ListMovies'
 
-export default function Search() {
+export default function Search(title) {
   const [movies, setMovies] = useState(null);
-  const { query } = useRouter();
+  // const { query } = useRouter();
 
   useEffect(() => {
     document.getElementById("search-movie").focus();
   }, []);
 
+  // const url = `http://www.omdbapi.com/?apikey=8f82567b&s=${title}`;
 
   useEffect(() => {
     (async () => {
-      if (size(query.query) > 0) {
-        const response = await searchMoviesApi(query.query);
+      if (size(`http://www.omdbapi.com/?apikey=8f82567b&s=${title}`) > 0) {
+        const response = await searchMoviesApi(`http://www.omdbapi.com/?apikey=8f82567b&s=${title}`);
         if (size(response) > 0) setMovies(response);
         else setMovies([]);
       } else {
