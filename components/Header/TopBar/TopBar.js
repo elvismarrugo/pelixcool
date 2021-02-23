@@ -3,11 +3,23 @@ import { Container, Menu, Grid, Image, Input, Icon } from 'semantic-ui-react';
 import Link from 'next/link';
 import BasicModal from '../../Modal/BasicModal';
 import Auth from '../../Auth';
-import { useRouter } from 'next/router';
+import useAuth from "../../../hooks/useAuth";
+import { getMeApi } from "../../../api/user";
+// import { size } from "lodash";
+import ListMovies from '../../../components/ListMovies/ListMovies'
 
 export default function TopBar() {
   const [showModal, setShowModal] = useState(false);
   const [titleModal, setTitleModal] = useState('Iniciar Sesión');
+  const [user, setUser] = useState(undefined);
+  const { auth, logout } = useAuth();
+
+  useEffect(() => {
+    (async () => {
+      const response = await getMeApi(logout);
+      setUser(response);
+    })();
+  }, [auth]);
 
   const onShowModal = () => setShowModal(true);
   const onCloseModal = () => setShowModal(false);
@@ -21,8 +33,13 @@ export default function TopBar() {
             <NavLinks />
           </Grid.Column>
           <Grid.Column width={10} className='top-bar__right'>
-            <Search />
-            <Login onShowModal={onShowModal} />
+            <Search/>
+            {user !== undefined && (
+              <Login
+                onShowModal={onShowModal}
+                user={user}
+                logout={logout}/>
+            )}
           </Grid.Column>
         </Grid>
       </Container>
@@ -54,10 +71,6 @@ function NavLinks() {
       <Link href='/'>
         <Menu.Item as='a'>Inicio</Menu.Item>
       </Link>
-      <Link href='/milista'>
-        <Menu.Item as='a'>Mi Lista</Menu.Item>
-      </Link>
-
       <Link href='/nuevas'>
         <Menu.Item as='a'>Nuevas</Menu.Item>
       </Link>
@@ -69,14 +82,35 @@ function NavLinks() {
 }
 
 function Login(props) {
-  const { onShowModal } = props;
+  const { onShowModal, user, logout } = props;
 
   return (
     <Menu>
-      <Menu.Item onClick={onShowModal}>
-        <Icon name='user outline' />
-        Mi cuenta
-      </Menu.Item>
+      {user ? (
+        <>
+        <Link href="/wishlist">
+            <Menu.Item as="a">
+              <Icon name="heart outline" />
+              Wishlist
+            </Menu.Item>
+          </Link>
+          <Link href="/account">
+            <Menu.Item as="a" className="m-0">
+              <Icon name="user outline" />
+              {user.name} {user.lastname}
+            </Menu.Item>
+          </Link>
+          <Menu.Item className="m-0" onClick={logout}>
+            <Icon name='power off' />
+            Cerrar Sesión
+          </Menu.Item>
+        </>
+      ) : (
+        <Menu.Item className="m-0" onClick={onShowModal}>
+          <Icon name='user outline' />
+          Mi cuenta
+        </Menu.Item>
+      )}
     </Menu>
   );
 }
@@ -84,17 +118,20 @@ function Login(props) {
 function Search() {
   const [searchStr, setSearchStr] = useState('')
   const [load, setLoad] = useState(false);
-  // const router = useRouter();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               º
- 
-  // useEffect(() => {
-  //   if (load) {
-  //     router.push({searchStr});
-  //     // router.push(`/search?query=${searchStr}`);
-  //   }
-  //   setLoad(true);
-  // }, [searchStr])
+  // const [movie, setMovie] = useState(null);
+  const [movies, setMovies] = useState(null);
+  
+  
+    useEffect(() => {
+    if (load) {
+      // setMovie(searchStr)
+      // console.log("nojodadd")
+      // alert("nojoda")
+      <ListMovies movies={movies} />
+    }    
+    setLoad(true);
+  }, [searchStr]);
 
-  console.log(searchStr)
   return (
     <Input
       id='search-movie'
