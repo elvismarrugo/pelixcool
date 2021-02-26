@@ -5,6 +5,7 @@ import { size } from "lodash";
 import BasicLayout from '../layouts/BasicLayout'
 import { searchMoviesApi } from '../api/movie'
 import ListMovies from '../components/ListMovies'
+import Seo from "../components/Seo";
 
 export default function search() {
 
@@ -30,6 +31,7 @@ export default function search() {
 
   return (
     <BasicLayout className="search">
+    <Seo title={`Buscando: ${query.query}`} />
       {!movies && <Loader active>Buscando Peliculas</Loader>}
       {movies && size(movies) === 0 && (
         <div>

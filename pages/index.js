@@ -4,6 +4,7 @@ import { size } from "lodash";
 import BasicLayout from '../layouts/BasicLayout'
 import { getMoviesApi } from '../api/movie';
 import ListMovies from '../components/ListMovies'
+import Seo from "../components/Seo";
 
 export default function Home() {
   const [movies, setMovies] = useState(null);
@@ -18,6 +19,7 @@ export default function Home() {
 
   return (
     <BasicLayout className="home">
+    <Seo />
       {!movies && <Loader active>Cargando juegos</Loader>}
       {movies && size(movies) === 0 && (
         <div>
