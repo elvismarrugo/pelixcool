@@ -20,10 +20,10 @@ export default function Home() {
   return (
     <BasicLayout className="home">
     <Seo />
-      {!movies && <Loader active>Cargando juegos</Loader>}
+      {!movies && <Loader active>Cargando Peliculas</Loader>}
       {movies && size(movies) === 0 && (
         <div>
-          <h3>No hay juegos</h3>
+          <h3>No hay Peliculas</h3>
         </div>
       )}
       {size(movies) > 0 && <ListMovies movies={movies} />}
