@@ -13,7 +13,7 @@ export default function Seo(props) {
 }
 
 Seo.defaultProps = {
-  title: "PelixCool - Tus peliculas favoritas",
+  title: "PelixCool - Tus peliculas y series favoritas",
   description:
-    "Tus peliculas favoritas, para poder ser un fanatico.",
+    "Aqui podrás registrar tus peliculas y series preferidas para verlas cuando prefieras",
 };
