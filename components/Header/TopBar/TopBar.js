@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Container, Menu, Grid, Image, Input, Icon } from 'semantic-ui-react';
 import Link from 'next/link';
+import { useRouter } from 'next/router'
 import BasicModal from '../../Modal/BasicModal';
 import Auth from '../../Auth';
 import useAuth from "../../../hooks/useAuth";
 import { getMeApi } from "../../../api/user";
-// import { size } from "lodash";
-import ListMovies from '../../../components/ListMovies/ListMovies'
 
 export default function TopBar() {
   const [showModal, setShowModal] = useState(false);
@@ -118,25 +117,20 @@ function Login(props) {
 function Search() {
   const [searchStr, setSearchStr] = useState('')
   const [load, setLoad] = useState(false);
-  // const [movie, setMovie] = useState(null);
-  const [movies, setMovies] = useState(null);
-  
-  
-    useEffect(() => {
+  const router = useRouter();
+
+  useEffect(() => {
     if (load) {
-      // setMovie(searchStr)
-      // console.log("nojodadd")
-      // alert("nojoda")
-      <ListMovies movies={movies} />
-    }    
+      router.push(`/search?query=${searchStr}`);
+    }
     setLoad(true);
   }, [searchStr]);
 
   return (
     <Input
       id='search-movie'
-      icon={{ name: 'search' }}
-      value={searchStr}
+      icon={{ name: "search" }}
+      value={router.query.query}
       onChange={(_, data) => setSearchStr(data.value)}
     />
   );

@@ -1,3 +1,4 @@
+import React from "react";
 import { Image, Grid } from "semantic-ui-react";
 import Link from "next/link";
 import { map } from "lodash";
@@ -13,6 +14,7 @@ export default function ListMovies(props) {
   const { movies } = props;
   const { width } = useWindowsSize();
   
+
   const getColumnsRender = () => {
     switch (true) {
       case width > breakpointUpLg:
@@ -26,12 +28,11 @@ export default function ListMovies(props) {
     }
   };
 
-
   return (
     <div className="list-movies">
       <Grid>
         <Grid.Row columns={getColumnsRender()}>
-          {map(movies.Search, (movie) => (
+          {map(movies, (movie) => (
             <Movie key={movie.imdbID} movie={movie} />
           ))}
         </Grid.Row>

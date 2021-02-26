@@ -8,9 +8,9 @@ import ListMovies from '../components/ListMovies'
 export default function Home() {
   const [movies, setMovies] = useState(null);
 
-  useEffect(() => {
+    useEffect(() => {
     (async () => {
-      const response = await getMoviesApi(searchStr || "batman");
+      const response = await getMoviesApi();
       if (size(response) > 0) setMovies(response);
       else setMovies([]);
     })();
