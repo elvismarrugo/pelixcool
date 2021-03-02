@@ -13,7 +13,7 @@ import {
 export default function ListMovies(props) {
   const { movies } = props;
   const { width } = useWindowsSize();
-  
+
 
   const getColumnsRender = () => {
     switch (true) {
@@ -33,19 +33,22 @@ export default function ListMovies(props) {
       <Grid>
         <Grid.Row columns={getColumnsRender()}>
           {map(movies, (movie) => (
-            <Movie key={movie.imdbID} movie={movie} />
+            <MovieItem movie={movie} key={movie.imdbID} />
           ))}
         </Grid.Row>
       </Grid>
     </div>
   )
 }
-function Movie(props) {
+function MovieItem(props) {
   const { movie } = props;
 
   return (
     <Grid.Column className="list-movies__movie">
-      <Link href={`/${movie.imdbID}`}>
+      {/* <Link href={`/${movie.imdbID}`}> */}
+      {/* <Link href="movie/[imdbID]" as={`movie/${movie.imdbID}`}> */}
+      <Link href="/[imdbID]" as={`/${movie.imdbID}`}>
+        
         <a>
           <div className="list-movies__movie-poster">
             <Image src={movie.Poster} alt={movie.Title} />

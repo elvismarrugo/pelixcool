@@ -130,6 +130,7 @@ function Search() {
     <Input
       id='search-movie'
       icon={{ name: "search" }}
+      // value={searchStr}
       value={router.query.query}
       onChange={(_, data) => setSearchStr(data.value)}
     />
