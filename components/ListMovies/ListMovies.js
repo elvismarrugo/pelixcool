@@ -32,8 +32,8 @@ export default function ListMovies(props) {
     <div className="list-movies">
       <Grid>
         <Grid.Row columns={getColumnsRender()}>
-          {map(movies, (movie, key) => (
-            <MovieItem movie={movie} key={key} />
+          {map(movies, (movie) => (
+            <MovieItem movie={movie} key={movie.imdbID}/>
           ))}
         </Grid.Row>
       </Grid>
@@ -43,18 +43,15 @@ export default function ListMovies(props) {
 
 function MovieItem(props) {
   const { movie } = props;
-
+  
   return (
     <Grid.Column className="list-movies__movie">
-      {/* <Link href={`/${movie.imdbID}`}> */}
-      {/* <Link href="movie/[imdbID]" as={`movie/${movie.imdbID}`}> */}
-      <Link href="/[imdbID]" as={`/${movie.imdbID}`}>
-        
+      <Link href="[imdbID]" as={`/${movie.imdbID}` }  >
+      {/* <Link href={`/${movie.url}`}> */}
         <a>
-          <div className="list-movies__movie-poster">
+          <div  className="list-movies__movie-poster">
             <Image src={movie.Poster} alt={movie.Title} />
           </div>
-          <h2>{movie.Title}</h2>
         </a>
       </Link>
     </Grid.Column>

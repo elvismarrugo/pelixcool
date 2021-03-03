@@ -34,29 +34,11 @@ export async function getMovieByUrlApi(title) {
     const url = `${BASE_URLAPI}&i=${title}`;
     const response = await fetch(url);
     const result = await response.json();
-    const movies = result.Search
-    return movies;
+    // console.log(result);
+    return { result }
+    // return result;
   } catch (error) {
     console.log(error);
     return null;
   }
 }
-
-// export async function getMovieByUrlApi(query) {
-//   // const imdbID = query;
-//   // console.log(query.movie)
-
-//   try {
-//     // const url = `https://www.omdbapi.com/?apikey=8f82567b&i=tt0372784`;
-//     const url = `${BASE_URLAPI}&i=${query}`;
-//     console.log(url)
-//     const data = await fetch(url);
-//     const movie = await data.json();
-//     return {
-//       movie,
-//     }
-//   } catch (error) {
-//     console.log(error);
-//     return null;
-//   }
-// }
