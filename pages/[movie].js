@@ -7,23 +7,19 @@ import HeaderMovie from '../components/Movie/HeaderMovie';
 export default function Movie() {
   const [movie, setMovie] = useState(null);
   const { query } = useRouter();
-  // const data = useRouter();
-  // const { imdbID } = data.query
-  
+
   useEffect(() => {
     (async () => {
       const response = await getMovieByUrlApi(query.movie);
-      // console.log(`${response}`)
       setMovie(response);
     })();
-  }, [movie]);
+  }, [query]);
 
-  if (!game) return null;
+  if (!movie) return null;
 
   return (
     <BasicLayout className="movie">
-      <HeaderMovie movie={movie}/>
-      <p>Tabs Movie</p>
+      <HeaderMovie movie={movie} />
     </BasicLayout>
   );
 }

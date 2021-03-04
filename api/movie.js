@@ -29,14 +29,13 @@ export async function searchMoviesApi(title) {
 }
 
 export async function getMovieByUrlApi(title) {
+  // console.log(`${title} getMovieByUrlApi`)
   try {
     // https://www.omdbapi.com/?apikey=8f82567b&s=batman
     const url = `${BASE_URLAPI}&i=${title}`;
     const response = await fetch(url);
     const result = await response.json();
-    // console.log(result);
-    return { result }
-    // return result;
+    return {movie: result };
   } catch (error) {
     console.log(error);
     return null;
