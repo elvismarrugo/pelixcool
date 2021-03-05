@@ -22,7 +22,7 @@ export default function HeaderMovie(props) {
       <Grid.Column mobile={16} tablet={10} computer={11}>
         <Info movie={movie} />
       </Grid.Column>
-    </Grid>  
+    </Grid>
   );
 }
 
@@ -76,24 +76,4 @@ function Info(props) {
       />
     </>
   );
-}
-
-
-function Info(props) {
-  const { movie } = props;
-  const { Title } = movie.movie;
-
-  return (
-      <div className="header-movie__title">
-          {Title}
-          <Icon
-          name={isFavorite ? "heart" : "heart outline"}
-          className={classNames({
-            like: isFavorite,
-          })}
-          link
-          onClick={isFavorite ? deleteFavorite : addFavorite}
-        />
-      </div>
-  )
 }

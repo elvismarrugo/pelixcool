@@ -1,5 +1,6 @@
 import React from "react";
 import { Tab } from "semantic-ui-react";
+import InfoMovie from "../InfoMovie";
 
 export default function TabsMovie(props) {
   const { movie } = props;
@@ -9,7 +10,7 @@ export default function TabsMovie(props) {
       menuItem: "Información",
       render: () => (
         <Tab.Pane>
-          <h1>Info movie</h1>
+          <InfoMovie movie={movie} />
         </Tab.Pane>
       ),
     },
