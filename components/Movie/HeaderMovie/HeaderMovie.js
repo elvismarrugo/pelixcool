@@ -29,44 +29,45 @@ export default function HeaderMovie(props) {
 function Info(props) {
   const { movie } = props;
   const { Title, Plot } = movie.movie;;
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [realoadFavorite, setRealoadFavorite] = useState(false);
-  const { auth, logout } = useAuth();
-
-  useEffect(() => {
+ /*  const [isFavorite, setIsFavorite] = useState(false);
+  const [realoadFavorite, setRealoadFavorite] = useState(false); */
+/*   const { auth, logout } = useAuth();
+ */
+/*   useEffect(() => {
     (async () => {
       const response = await isFavoriteApi(auth.idUser, movie.id, logout);
       if (size(response) > 0) setIsFavorite(true);
       else setIsFavorite(false);
     })();
     setRealoadFavorite(false);
-  }, [movie, realoadFavorite]);
+  }, [movie, realoadFavorite]); */
 
-  const addFavorite = async () => {
+ /*  const addFavorite = async () => {
     if (auth) {
       await addFavoriteApi(auth.idUser, movie.id, logout);
       setRealoadFavorite(true);
     }
-  };
+  }; */
 
-  const deleteFavorite = async () => {
+/*   const deleteFavorite = async () => {
     if (auth) {
       await deleteFavoriteApi(auth.idUser, movie.id, logout);
       setRealoadFavorite(true);
     }
   };
-
+ */
   return (
     <>
       <div className="header-movie__title">
         {Title}
         <Icon
-          name={isFavorite ? "heart" : "heart outline"}
-          className={classNames({
+          name = "heart outline"
+          /* name={isFavorite ? "heart" : "heart outline"} */
+         /*  className={classNames({
             like: isFavorite,
-          })}
+          })} */
           link
-          onClick={isFavorite ? deleteFavorite : addFavorite}
+          /* onClick={isFavorite ? deleteFavorite : addFavorite} */
         />
       </div>
       <div
