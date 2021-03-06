@@ -28,6 +28,7 @@ export default function Home() {
       )}
       {size(movies) > 0 &&
         <ListMovies movies={movies} />
+        
       }
     </BasicLayout>
   );
