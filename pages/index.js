@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Loader } from "semantic-ui-react";
 import { size } from "lodash";
 import BasicLayout from '../layouts/BasicLayout'
-import { getMoviesApi, getTotalMoviesApi } from '../api/movie';
+import { getMoviesApi } from '../api/movie';
 import ListMovies from '../components/ListMovies'
 // import Pagination from "../components/Pagination";
 import Seo from "../components/Seo";
