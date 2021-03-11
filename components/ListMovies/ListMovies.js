@@ -32,8 +32,8 @@ export default function ListMovies(props) {
     <div className="list-movies">
       <Grid>
         <Grid.Row columns={getColumnsRender()}>
-          {map(movies, (movie) => (
-            <MovieItem movie={movie} key={movie.imdbID}/>
+          {map(movies, (movie, i) => (
+            <MovieItem movie={movie} key={i}/>
           ))}
         </Grid.Row>
       </Grid>
