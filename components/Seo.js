@@ -8,6 +8,8 @@ export default function Seo(props) {
     <Head>
       <title>{title}</title>
       <meta property="description" content={description} />
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
+
     </Head>
   );
 }
