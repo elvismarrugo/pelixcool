@@ -121,7 +121,7 @@ function Search() {
 
   useEffect(() => {
     if (load) {
-      router.push(`/search?query=${searchStr}`);
+      router.push(`/search?query=${encodeURI(searchStr)}`);
     }
     setLoad(true);
   }, [searchStr]);
